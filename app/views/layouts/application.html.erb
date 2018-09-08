@@ -9,6 +9,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="inner">
+        <%= render 'layouts/navbar' %>
+      </div>
+    </header>
+    <div class="inner">
+       <article>
+         <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </article>
+      <aside>
+      </aside>
+    </div>
+   
+    <footer>
+      <div class="inner">
+        
+      </div>
+    </footer>
   </body>
 </html>
