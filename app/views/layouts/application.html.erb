@@ -11,11 +11,7 @@
   <body>
     <header>
       <div class="inner">
-        <% if logged_in? %>
-          <p><%= current_user.name %>でログイン中</p>
-        <% else %>
-          <p>ログインしてません</p>
-        <% end %>
+        
         <%= render 'layouts/navbar' %>
       </div>
     </header>
