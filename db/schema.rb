@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180908041152) do
+ActiveRecord::Schema.define(version: 20180908055548) do
+
+  create_table "spots", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "address"
+    t.float "latitude", limit: 24
+    t.float "longitude", limit: 24
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_spots_on_user_id"
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -22,4 +33,5 @@ ActiveRecord::Schema.define(version: 20180908041152) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "spots", "users"
 end

@@ -1,0 +1,63 @@
+<script>
+if( navigator.geolocation ){
+  navigator.geolocation.getCurrentPosition( success, error, option );
+  function success(position){
+    var data = position.coords;
+    var lat = data.latitude;
+    var lng = data.longitude;
+    console.log(lng);
+    console.log(lat);
+    console.log(data);
+    $.ajax({
+      type: 'GET',
+      url: "<%= ajax_select_url %>",
+      data: {"lat": lat, "lng": lng},
+      success: function(data) {
+        console.log("data send success");
+      },
+      error: function(data) {
+        console.log("data send error");
+      }
+    });
+    document.getElementById('latfield').value = lat;
+    document.getElementById('lngfield').value = lng;
+  }
+  function error(error){
+    var errorMessage = {
+      0: "原因不明のエラーが発生しました。",
+      1: "位置情報が許可されませんでした。",
+      2: "位置情報が取得できませんでした。",
+      3: "タイムアウトしました。",
+    } ;
+    alert( errorMessage[error.code]);
+  }
+  var option = {
+    "enableHighAccuracy": false,
+    "timeout": 100 ,
+    "maximumAge": 100 ,
+  };
+
+}else{
+  alert("あなたの端末では、現在位置を取得できません。");
+}
+</script>
+
+
+<h2>近くのスポット</h2>
+
+<ul id="spotList">
+  
+</ul>
+
+<h3>現在地から</h3>
+<%= form_tag ajax_search_form_path, method:'get', remote: true do %>
+  <%= label :lat, '緯度' %>
+  <%= text_field :latlag, :lat, { class: 'form-control', id: 'latfield', name: 'latfield', readonly: true} %>
+  <%= label :lng, '経度' %>
+  <%= text_field :latlag, :lng, { class: 'form-control', id: 'lngfield', name: 'lngfield', readonly: true} %>
+  <%= label :distance, '距離' %>
+  <%= select :latlng, :distance, ['2', '5', '10', '20', '40', '100', '200', '400'], {}, { class: 'form-control' } %>
+  km以内のスポットで
+  <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+<% end %>
+

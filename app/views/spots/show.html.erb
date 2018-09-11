@@ -1,0 +1,7 @@
+<h2><%= @spot.name %></h2>
+<p><%= @spot.address %>
+緯度:<%= @spot.latitude %>
+経度:<%= @spot.longitude %></p>
+
+
+ <%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>

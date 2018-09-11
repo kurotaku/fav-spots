@@ -1,0 +1,5 @@
+var addHTML = "";
+<% @spots.each do |spot| %>
+  addHTML += `<%= render 'search_spot_once', spot: spot %>`;
+<% end %>
+$('#spotList').html(addHTML);
