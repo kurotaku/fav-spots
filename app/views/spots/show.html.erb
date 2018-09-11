@@ -3,5 +3,14 @@
 緯度:<%= @spot.latitude %>
 経度:<%= @spot.longitude %></p>
 
+<h3>コメント一覧</h3>
+
+<ul>
+  <% @spot.reviews.each do |review| %>
+    <li><%= review.comment %> by <%= review.user.name %></li>
+  <% end %>
+</ul>
+
+
 
  <%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>

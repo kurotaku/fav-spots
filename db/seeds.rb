@@ -29,3 +29,4 @@ admin_user.spots.create(name: '鶴岡八幡宮', address: '神奈川県鎌倉市
 admin_user.spots.create(name: '武蔵一宮氷川神社', address: '埼玉県さいたま市大宮区高鼻町１−４０７', latitude: '35.9148', longitude: '139.63')
 admin_user.spots.create(name: '清水寺', address: '京都府京都市東山区清水１丁目２９４', latitude: '34.9945', longitude: '135.784')
 admin_user.spots.create(name: '出雲大社 ', address: '島根県出雲市大社町杵築東１９５', latitude: '35.4011', longitude: '132.685')
+admin_user.spots.create(name: '寒川神社 ', address: '神奈川県高座郡寒川町宮山３９１６', latitude: '35.3788943', longitude: '139.3832276')

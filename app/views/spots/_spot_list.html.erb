@@ -1,0 +1,1 @@
+<li>ID:<%= spot.id %> | <%= spot.name %> | <%= spot.address %> | <%= link_to '詳細', spot_path(spot) %> | <%= link_to '投稿', new_review_path(spot) %>(<%= spot.reviews.count %>)</li>

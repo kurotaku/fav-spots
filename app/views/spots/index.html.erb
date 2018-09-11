@@ -1,7 +1,5 @@
 <ul>
   <% @spots.each do |spot| %>
-  <li>
-    <%= spot.name %> | <%= spot.address %> | <%= spot.latitude %> | <%= spot.longitude %>
-  </li>
+  <%= render 'spot_list', spot: spot %>
   <% end %>
 </ul>
