@@ -40,6 +40,10 @@ gem 'rails-i18n'
 gem 'font-awesome-rails'
 
 gem 'geocoder'
+
+gem 'carrierwave'
+gem 'rmagick'
+
 gem 'geokit-rails'
 
 # Use Capistrano for deployment

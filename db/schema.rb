@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180911131652) do
+ActiveRecord::Schema.define(version: 20180912003926) do
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "spot_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180911131652) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["spot_id"], name: "index_reviews_on_spot_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

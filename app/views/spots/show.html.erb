@@ -7,7 +7,7 @@
 
 <ul>
   <% @spot.reviews.each do |review| %>
-    <li><%= review.comment %> by <%= review.user.name %></li>
+    <li><%= image_tag(review.image, class: 'review-thumb') %><%= review.comment %> by <%= review.user.name %></li>
   <% end %>
 </ul>
 
