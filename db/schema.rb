@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180912150639) do
+ActiveRecord::Schema.define(version: 20180913125110) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "type"
+    t.string "category_type"
     t.string "name"
     t.string "slug"
     t.datetime "created_at", null: false

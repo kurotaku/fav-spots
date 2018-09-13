@@ -10,7 +10,8 @@ module ApplicationHelper
   
   def sidebar_list_items
     items = [
-      { text: 'スポット登録', path: new_spot_path },
+      { text: 'スポット一覧', path: spots_path },
+      { text: 'スポット検索', path: search_path },
     ]
       
     html = ''

@@ -1,5 +1,10 @@
-<ul>
-  <% @spots.each do |spot| %>
-  <%= render 'spot_list', spot: spot %>
-  <% end %>
-</ul>
+<section>
+  <h1>スポット一覧</h1>
+  <ul>
+    <% @spots.each do |spot| %>
+    <%= render 'spot_list', spot: spot %>
+    <% end %>
+  </ul>
+</section>
+
+

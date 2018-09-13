@@ -42,22 +42,34 @@ if( navigator.geolocation ){
 }
 </script>
 
+<section>
+  <h1>近くのスポット</h2>
 
-<h2>近くのスポット</h2>
-
-<ul id="spotList">
+  <ul id="spotList">
+    
+  </ul>
   
-</ul>
+  <h3>現在地から</h3>
+  <%= form_tag ajax_location_path, method:'get', remote: true do %>
+    <%= label :lat, '緯度' %>
+    <%= text_field :latlag, :lat, { class: 'form-control', id: 'latfield', name: 'latfield', readonly: true} %>
+    <%= label :lng, '経度' %>
+    <%= text_field :latlag, :lng, { class: 'form-control', id: 'lngfield', name: 'lngfield', readonly: true} %>
+    <%= label :distance, '距離' %>
+    <%= select :latlng, :distance, ['2', '5', '10', '20', '40', '100', '200', '400'], {}, { class: 'form-control' } %>
+    km以内のスポットで
+    <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+  <% end %>
+  
+  <h3>絞り込み</h3>
+  <%= form_tag ajax_search_form_path, method:'get', remote: true do %>
+    <%= label :pref, '都道府県' %>
+    <%= collection_select(:category, :category_id, @prefs, :slug, :name, {}, { class: 'form-control' } ) %>
+    この条件で
+    <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+  <% end %>
+  
+  
+</section>
 
-<h3>現在地から</h3>
-<%= form_tag ajax_search_form_path, method:'get', remote: true do %>
-  <%= label :lat, '緯度' %>
-  <%= text_field :latlag, :lat, { class: 'form-control', id: 'latfield', name: 'latfield', readonly: true} %>
-  <%= label :lng, '経度' %>
-  <%= text_field :latlag, :lng, { class: 'form-control', id: 'lngfield', name: 'lngfield', readonly: true} %>
-  <%= label :distance, '距離' %>
-  <%= select :latlng, :distance, ['2', '5', '10', '20', '40', '100', '200', '400'], {}, { class: 'form-control' } %>
-  km以内のスポットで
-  <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
-<% end %>
 

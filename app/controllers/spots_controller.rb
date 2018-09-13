@@ -1,4 +1,5 @@
 class SpotsController < ApplicationController
+  before_action :require_admin_logged_in, only: [:new, :create, :edit, :updeate, :destroy]
   before_action :set_spot, only: [:show, :destroy]
   
   def index
@@ -34,6 +35,7 @@ class SpotsController < ApplicationController
   end
   
   def search
+    @prefs = Category.where(category_type: 'pref')
   end
   
   def ajax_select
@@ -42,6 +44,18 @@ class SpotsController < ApplicationController
       lng = params[:lng]
       latlag = [lat, lng]
       @spots = Spot.near(latlag, 100, units: :km)
+    else
+      @spots = Spot.all
+    end
+  end
+  
+  def ajax_location
+    if params[:latfield].present?
+      lat = params[:latfield]
+      lng = params[:lngfield]
+      distance = params[:latlng][:distance]
+      latlag = [lat, lng]
+      @spots = Spot.near(latlag, distance, units: :km)
     else
       @spots = Spot.all
     end

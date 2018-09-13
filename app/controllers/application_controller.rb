@@ -11,4 +11,16 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def require_admin_logged_in
+    unless admin_logged_in?
+      redirect_to login_url
+    end
+  end
+  
+  def require_root_logged_in
+    unless root_logged_in?
+      redirect_to login_url
+    end
+  end
+  
 end
