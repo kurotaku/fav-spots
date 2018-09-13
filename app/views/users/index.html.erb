@@ -1,7 +1,38 @@
-<ul>
-  <% @users.each do |user| %>
-  <li>
-    <%= user.name %>
-  </li>
+<section>
+  <h1>ユーザー一覧</h1>
+  
+  <% if @users.any? %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <% if current_user.root %>
+              <th>ID</th>
+            <% end %>
+            <th>名前</th>
+            <th>email</th>
+            <th>root</th>
+            <th>admin</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <% if current_user.root %>
+              <td><%= user.id %></td>
+            <% end %>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.root %></td>
+            <td><%= user.admin %></td>
+            <td>
+              <%= link_to '詳細', user_path(user), class: 'btn btn-secondary' %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <%#= paginate @users %>
   <% end %>
-</ul>
+</section>

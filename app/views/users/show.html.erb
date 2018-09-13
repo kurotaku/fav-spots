@@ -1,2 +1,42 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %>の詳細</h1>
+<section>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">項目</th>
+        <th scope="col">内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if current_user.root %>
+        <tr>
+          <th scope="row">id</th>
+          <td><%= @user.id %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th scope="row">名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">email</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th scope="row">root</th>
+        <td><%= @user.root %></td>
+      </tr>
+      <tr>
+        <th scope="row">admin</th>
+        <td><%= @user.admin %></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <% if current_user.admin %>
+    <%= link_to '編集', edit_user_path, class: 'btn btn-lg btn-warning' %>
+  <% end %>
+  <%= link_to '削除', @message, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+</section>

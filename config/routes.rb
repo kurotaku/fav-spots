@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
+  get 'signup', to: 'users#new'
   resources :users
   
   resources :spots do
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
+  
+  resources :categories
   
   get 'search', to: 'spots#search'
   get 'ajax_select', to: 'spots#ajax_select', as: 'ajax_select'

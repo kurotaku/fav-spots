@@ -1,0 +1,2 @@
+class Featurea < Category
+end
