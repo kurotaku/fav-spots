@@ -40,6 +40,7 @@ gem 'rails-i18n'
 gem 'font-awesome-rails'
 
 gem 'geocoder'
+gem 'jp_prefecture'
 
 gem 'carrierwave'
 gem 'rmagick'

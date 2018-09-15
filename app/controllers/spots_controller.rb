@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   before_action :require_admin_logged_in, only: [:new, :create, :edit, :updeate, :destroy]
-  before_action :set_spot, only: [:show, :destroy]
+  before_action :set_spot, only: [:show, :edit, :update, :destroy]
   
   def index
     @spots = Spot.all
@@ -8,6 +8,7 @@ class SpotsController < ApplicationController
 
   def new
     @spot = Spot.new
+    @spot.category_spots.build
   end
 
   def show
@@ -28,10 +29,25 @@ class SpotsController < ApplicationController
   def edit
   end
   
+  def update
+    if @spot.update(spot_params)
+      flash[:success] = 'スポット情報を変更しました'
+      redirect_to @spot
+    else
+      render :edit
+    end
+  end
+  
   def destroy
     @spot.destroy
     flash[:success] = 'スポットを削除しました'
     redirect_to spots_url
+  end
+  
+  def pref
+    @spots = Spot.where(pref: params[:pref])
+    @pref = JpPrefecture::Prefecture.find name: params[:pref]
+    @prefname = @pref.name
   end
   
   def search
@@ -80,7 +96,7 @@ class SpotsController < ApplicationController
   end
   
   def spot_params
-    params.require(:spot).permit(:name, :address, :latitude, :longitude)
+    params.require(:spot).permit(:name, :address, :pref, :latitude, :longitude, { :category_ids=> []})
   end
   
 end

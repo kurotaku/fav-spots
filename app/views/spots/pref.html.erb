@@ -1,10 +1,9 @@
 <section>
-  <h1>スポット一覧</h1>
+  <h1><%= @prefname %></h1>
   <ul>
     <% @spots.each do |spot| %>
       <%= render 'spot_list', spot: spot %>
     <% end %>
   </ul>
 </section>
-
 

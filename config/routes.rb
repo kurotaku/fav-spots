@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   
   resources :categories
   
+  get '/pref/:pref', to: 'spots#pref'
+  
   get 'search', to: 'spots#search'
   get 'ajax_select', to: 'spots#ajax_select', as: 'ajax_select'
   get 'ajax_location', to: 'spots#ajax_location', as: 'ajax_location'

@@ -22,11 +22,12 @@ test_user.password = 'test'
 test_user.password_confirmation = 'test'
 test_user.save!
 
-admin_user.spots.create(name: '久伊豆神社', address: '埼玉県越谷市越ヶ谷１７００', latitude: '35.9018', longitude: '139.791')
-admin_user.spots.create(name: '越谷 香取神社', address: '埼玉県越谷市大沢３丁目１３−３８', latitude: '35.9017', longitude: '139.782')
-admin_user.spots.create(name: '草加神社', address: '埼玉県草加市氷川町２１１８−２', latitude: '35.8274', longitude: '139.801')
-admin_user.spots.create(name: '鶴岡八幡宮', address: '神奈川県鎌倉市雪ノ下２丁目１−３１', latitude: '35.3249', longitude: '139.556')
-admin_user.spots.create(name: '武蔵一宮氷川神社', address: '埼玉県さいたま市大宮区高鼻町１−４０７', latitude: '35.9148', longitude: '139.63')
-admin_user.spots.create(name: '清水寺', address: '京都府京都市東山区清水１丁目２９４', latitude: '34.9945', longitude: '135.784')
-admin_user.spots.create(name: '出雲大社 ', address: '島根県出雲市大社町杵築東１９５', latitude: '35.4011', longitude: '132.685')
-admin_user.spots.create(name: '寒川神社 ', address: '神奈川県高座郡寒川町宮山３９１６', latitude: '35.3788943', longitude: '139.3832276')
+admin_user.spots.create(name: '久伊豆神社', address: '埼玉県越谷市越ヶ谷１７００', pref: 'Saitama', latitude: '35.9018', longitude: '139.791')
+admin_user.spots.create(name: '越谷 香取神社', address: '埼玉県越谷市大沢３丁目１３−３８', pref: 'Saitama', latitude: '35.9017', longitude: '139.782')
+admin_user.spots.create(name: '草加神社', address: '埼玉県草加市氷川町２１１８−２', pref: 'Saitama', latitude: '35.8274', longitude: '139.801')
+admin_user.spots.create(name: '鶴岡八幡宮', address: '神奈川県鎌倉市雪ノ下２丁目１−３１', pref: 'Kanagawa', latitude: '35.3249', longitude: '139.556')
+admin_user.spots.create(name: '武蔵一宮氷川神社', address: '埼玉県さいたま市大宮区高鼻町１−４０７', pref: 'Saitama', latitude: '35.9148', longitude: '139.63')
+admin_user.spots.create(name: '清水寺', address: '京都府京都市東山区清水１丁目２９４', pref: 'Kyoto', latitude: '34.9945', longitude: '135.784')
+admin_user.spots.create(name: '出雲大社 ', address: '島根県出雲市大社町杵築東１９５', pref: 'Shimane', latitude: '35.4011', longitude: '132.685')
+admin_user.spots.create(name: '寒川神社 ', address: '神奈川県高座郡寒川町宮山３９１６', pref: 'Kanagawa', latitude: '35.3788943', longitude: '139.3832276')
+admin_user.spots.create(name: '榛名神社 ', address: '群馬県高崎市榛名山町８４９', pref: 'Gunma', latitude: '36.4563', longitude: '138.852')
