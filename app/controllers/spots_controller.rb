@@ -77,13 +77,10 @@ class SpotsController < ApplicationController
     end
   end
   
-  def ajax_search_form
-    if params[:latfield].present?
-      lat = params[:latfield]
-      lng = params[:lngfield]
-      distance = params[:latlng][:distance]
-      latlag = [lat, lng]
-      @spots = Spot.near(latlag, distance, units: :km)
+  def ajax_search
+    if params[:keywords].present?
+      pref = params[:keywords][:pref]
+      @spots = Spot.where(pref: pref)
     else
       @spots = Spot.all
     end

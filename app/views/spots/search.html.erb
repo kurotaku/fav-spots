@@ -62,9 +62,9 @@ if( navigator.geolocation ){
   <% end %>
   
   <h3>絞り込み</h3>
-  <%= form_tag ajax_search_form_path, method:'get', remote: true do %>
+  <%= form_tag ajax_search_path, method:'get', remote: true do %>
     <%= label :pref, '都道府県' %>
-    <%= collection_select(:category, :category_id, @prefs, :slug, :name, {}, { class: 'form-control' } ) %>
+    <%= collection_select(:keywords, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {}, { class: 'form-control' } ) %>
     この条件で
     <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
   <% end %>
