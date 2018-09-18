@@ -3,7 +3,56 @@
 緯度:<%= @spot.latitude %>
 経度:<%= @spot.longitude %></p>
 
-<h3>コメント一覧</h3>
+
+
+<h2>基本情報</h2>
+
+<script type="text/javascript">
+  function initMap() {
+
+    var latlng ={lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: latlng,
+        gestureHandling: "cooperative"
+    });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '住所：<%= @address %>';
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+        position:latlng,
+        map: map,
+        title: contentString
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAOyCOKNI46ijTFKEZtCUjh9Cx6R4PsO7Q&callback=initMap">
+</script>
+
+<style type="text/css">
+  #map { height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width: 100%;}
+</style>
+
+<div id="map"></div>
+
+
+
+
+<h2>コメント一覧</h2>
 
 <ul>
   <% @spot.reviews.each do |review| %>

@@ -44,6 +44,9 @@ class SpotsController < ApplicationController
     redirect_to spots_url
   end
   
+  def prefs
+  end
+  
   def pref
     @spots = Spot.where(pref: params[:pref])
     @pref = JpPrefecture::Prefecture.find name: params[:pref]
@@ -51,9 +54,11 @@ class SpotsController < ApplicationController
   end
   
   def search
-    @prefs = Category.where(category_type: 'pref')
+    @features = Category.where(category_type: 'feature')
+    @lucks = Category.where(category_type: 'luck')
   end
   
+  #読み込み時現在地から
   def ajax_select
     if params[:lat].present?
       lat = params[:lat]
@@ -65,6 +70,7 @@ class SpotsController < ApplicationController
     end
   end
   
+  #現在地から距離を変えて
   def ajax_location
     if params[:latfield].present?
       lat = params[:latfield]
@@ -77,12 +83,26 @@ class SpotsController < ApplicationController
     end
   end
   
+  #検索条件にマッチしたものを
   def ajax_search
-    if params[:keywords].present?
-      pref = params[:keywords][:pref]
-      @spots = Spot.where(pref: pref)
+    # 都道府県あり
+    if params[:area][:pref].present?
+      pref = params[:area][:pref]
+      if params[:keywords][:feature].present?
+        feature = params[:keywords][:feature]
+        feature_id = Category.find_by(slug: feature).id
+        @spots = category.spots.where(pref: pref).where(category_id: feature_id)
+        category = Category.find_by(slug: feature)
+      end
+    # 全国
     else
-      @spots = Spot.all
+      if params[:keywords][:feature].present?
+        feature = params[:keywords][:feature]
+        feature_id = Category.find_by(slug: feature).id
+        @spots = category.spots.where(category_id: feature_id)
+      else
+        @spots = Spot.all
+      end
     end
   end
   

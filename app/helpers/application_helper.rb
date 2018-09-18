@@ -12,6 +12,7 @@ module ApplicationHelper
     items = [
       { text: 'スポット一覧', path: spots_path },
       { text: 'スポット検索', path: search_path },
+      { text: 'エリア一覧', path: prefs_path },
     ]
       
     html = ''
