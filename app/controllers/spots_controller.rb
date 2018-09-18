@@ -106,6 +106,20 @@ class SpotsController < ApplicationController
     end
   end
   
+  def ajax_keyword
+    if params[:keyword].present?
+      keyword = params[:keyword]
+      if params[:pref].present?
+        pref = params[:pref]
+        @spots = Spot.where(pref: pref).where("kana LIKE ? OR name LIKE ?","%" + keyword + "%", "%" + keyword + "%")
+      else
+        @spots = Spot.where("kana LIKE ? OR name LIKE ?","%" + keyword + "%", "%" + keyword + "%")
+      end
+    else
+      @spots = Spot.all
+    end
+  end
+  
   private
   
   def set_spot
@@ -113,7 +127,7 @@ class SpotsController < ApplicationController
   end
   
   def spot_params
-    params.require(:spot).permit(:name, :address, :pref, :latitude, :longitude, { :category_ids=> []})
+    params.require(:spot).permit(:name, :kana, :address, :access, :phone, :pref, :latitude, :longitude, :overview, { :category_ids=> []})
   end
   
 end

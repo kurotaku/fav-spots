@@ -42,38 +42,91 @@ if( navigator.geolocation ){
 }
 </script>
 
+
+<section>
+  <!-- タブボタン部分 -->
+  <ul class="nav nav-pills nav-justified">
+    <li class="nav-item">
+      <a href="#tab1" class="nav-link active" data-toggle="tab">現在地から</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab2" class="nav-link" data-toggle="tab">エリア・カテゴリで絞り込み</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab3" class="nav-link" data-toggle="tab">キーワード検索</a>
+    </li>
+  </ul>
+  <!--タブのコンテンツ部分-->
+  <div class="tab-content">
+    <div id="tab1" class="tab-pane active">
+      <h3>現在地から</h3>
+      <%= form_tag ajax_location_path, method:'get', remote: true do %>
+        <%= label :lat, '緯度' %>
+        <%= text_field :latlag, :lat, { class: 'form-control', id: 'latfield', name: 'latfield', readonly: true} %>
+        <%= label :lng, '経度' %>
+        <%= text_field :latlag, :lng, { class: 'form-control', id: 'lngfield', name: 'lngfield', readonly: true} %>
+        <%= label :distance, '距離' %>
+        <%= select :latlng, :distance, ['2', '5', '10', '20', '40', '100', '200', '400'], {}, { class: 'form-control' } %>
+        km以内のスポットで
+        <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+      <% end %>
+    </div>
+    <div id="tab2" class="tab-pane">
+      <h3>エリア・カテゴリで絞り込み</h3>
+      <%= form_tag ajax_search_path, method:'get', remote: true do %>
+        <%= label :pref, '都道府県' %>
+        <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control' } ) %>
+        <%= label :feature, '特徴' %>
+        <%= collection_select(:keywords, :feature, @features, :slug, :name, {prompt: "選択してください"}, { class: 'form-control' } ) %>
+        <%= label :luck, 'ご利益' %>
+        <%= collection_select(:keywords, :luck, @lucks, :slug, :name, {}, { class: 'form-control' } ) %>
+        この条件で
+        <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+      <% end %>
+    </div>
+    <div id="tab3" class="tab-pane">
+      <h3>キーワード検索</h3>
+      <%= form_tag ajax_keyword_path, method:'get', remote: true do %>
+        <%= label :pref, '都道府県' %>
+        <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control', id: 'prefField' } ) %>
+        <%= label :keyword, 'キーワード' %>
+        <%= text_field :keywords, :keyword, class: 'form-control', id: 'searchField' %>
+        <%#= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
 <section>
   <h1>近くのスポット</h2>
 
   <ul id="spotList">
     
   </ul>
-  
-  <h3>現在地から</h3>
-  <%= form_tag ajax_location_path, method:'get', remote: true do %>
-    <%= label :lat, '緯度' %>
-    <%= text_field :latlag, :lat, { class: 'form-control', id: 'latfield', name: 'latfield', readonly: true} %>
-    <%= label :lng, '経度' %>
-    <%= text_field :latlag, :lng, { class: 'form-control', id: 'lngfield', name: 'lngfield', readonly: true} %>
-    <%= label :distance, '距離' %>
-    <%= select :latlng, :distance, ['2', '5', '10', '20', '40', '100', '200', '400'], {}, { class: 'form-control' } %>
-    km以内のスポットで
-    <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
-  <% end %>
-  
-  <h3>絞り込み</h3>
-  <%= form_tag ajax_search_path, method:'get', remote: true do %>
-    <%= label :pref, '都道府県' %>
-    <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control' } ) %>
-    <%= label :feature, '特徴' %>
-    <%= collection_select(:keywords, :feature, @features, :slug, :name, {prompt: "選択してください"}, { class: 'form-control' } ) %>
-    <%= label :luck, 'ご利益' %>
-    <%= collection_select(:keywords, :luck, @lucks, :slug, :name, {}, { class: 'form-control' } ) %>
-    この条件で
-    <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
-  <% end %>
-  
-  
 </section>
+
+<script>
+var timer = [];
+
+$(document).on('input', '#searchField', function(e){
+    e.preventDefault();
+    timer.push(1);
+    setTimeout(function(){
+      timer.pop();
+      if(timer.length == 0){
+        var tar = $('#searchField');
+        var input = $.trim(tar.val());
+        var pref = $('#prefField').val();
+        console.log(input);
+        $.ajax({
+          url: '<%= ajax_keyword_url %>',
+          type: 'GET',
+          data: {"keyword": input, "pref": pref}
+        })
+      }
+    },0);
+  });
+  
+</script>
 
 

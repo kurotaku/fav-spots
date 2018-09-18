@@ -7,6 +7,11 @@
   </div>
   
   <div class="form-group">
+    <%= f.label :kana, 'よみがな' %>
+    <%= f.text_field :kana, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :address, '住所' %>
     <%= f.text_field :address, class: 'form-control' %>
   </div>
@@ -14,6 +19,16 @@
   <div class="form-group">
     <%= f.label :pref, '都道府県' %>
     <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :name_e, :name, {}, {class: 'form-control'} %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :access, 'アクセス方法' %>
+    <%= f.text_field :access, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :phone, '電話番号' %>
+    <%= f.text_field :phone, class: 'form-control' %>
   </div>
   
   <div class="form-group">
@@ -26,9 +41,14 @@
     <%= f.text_field :longitude, class: 'form-control' %>
   </div>
   
-   <div class="form-group">
+  <div class="form-group">
     <%= f.label :category_ids, 'カテゴリー' %>
     <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :overview, '概要' %>
+    <%= f.text_area :overview, class: 'form-control' %>
   </div>
   
   <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>

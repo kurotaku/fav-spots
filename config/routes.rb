@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get 'ajax_select', to: 'spots#ajax_select', as: 'ajax_select'
   get 'ajax_location', to: 'spots#ajax_location', as: 'ajax_location'
   get 'ajax_search', to: 'spots#ajax_search', as: 'ajax_search'
+  get 'ajax_keyword', to: 'spots#ajax_keyword', as: 'ajax_keyword'
 end
