@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="/">FAV SPOTS</a>
-
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
+    <a class="navbar-brand mr-auto" href="/">FAV SPOTS</a>
+    <ul class="navbar-nav">
       <% if root_logged_in? %>
         <li class="nav-item">
           <%= link_to(content_tag(:i, ' データーベース図', class: 'fa fa-database'), dbmap_path, class: 'nav-link') %>
@@ -23,8 +22,16 @@
         </li>
       <% end %>
       <% if logged_in? %>
-        <li class="nav-item">
-          <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'nav-link') %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://example.com" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
+          <div class="dropdown-menu">
+            <%= link_to(content_tag(:i, ' マイページ', class: 'fa fa-user'), mypage_path, class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, ' プロフィール', class: 'fa fa-address-card'), user_path(current_user), class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'dropdown-item') %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          
         </li>
       <% else %>
         <li class="nav-item">
@@ -34,7 +41,6 @@
           <%= link_to(content_tag(:i, ' ログイン', class: 'fa fa-sign-in'), login_path, class: 'nav-link') %>
         </li>
       <% end %>
-      <li><% if logged_in? %><%= current_user.name %><% end %></li>
     </ul>
   </div>
 </nav>

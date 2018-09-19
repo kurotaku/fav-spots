@@ -52,6 +52,9 @@
   <% end %>
 </ul>
 
+<%= link_to 'このスポットの口コミを投稿', new_review_path(@spot), class: 'btn btn-success btn-lg btn-block' %>
+
+<hr />
 
 <%= link_to 'スポット一覧へ', spots_path, class: 'btn btn-lg btn-secondary' %>
 <%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>

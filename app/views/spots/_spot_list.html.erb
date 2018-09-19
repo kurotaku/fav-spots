@@ -1,1 +1,1 @@
-<li>ID:<%= spot.id %> | <%= spot.name %> | <%= spot.address %> | <%= link_to '詳細', spot_path(spot) %> | <%= link_to '投稿', new_review_path(spot) %>(<%= spot.reviews.count %>)</li>
+<li><%= link_to(content_tag(:span, spot.name + "（" + spot.reviews.count.to_s + "）", class: 'spot-name') + content_tag(:span, spot.address, class: 'spot-address'), spot_path(spot), class: '') %></li>

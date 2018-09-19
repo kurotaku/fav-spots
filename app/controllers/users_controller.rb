@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:edit, :destroy]
+  before_action :require_user_logged_in, only: [:show, :edit, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -41,6 +41,9 @@ class UsersController < ApplicationController
     
     flash[:success] = 'ユーザーは削除されました'
     redirect_to users_url
+  end
+  
+  def mypage
   end
   
   private
