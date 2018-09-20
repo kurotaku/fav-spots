@@ -26,26 +26,26 @@ module ApplicationHelper
   end
   
   def user_icon_thumb(user)
-    if user.image
+    if user.image.present?
       image_tag user.image.thumb.url, class: 'thumb'
     else
-      image_tag '/assets/human_default.png', class: 'thumb'
+      image_tag '/assets/user_default_300.png', class: 'thumb'
     end
   end
   
   def user_icon_thumb100(user)
-    if user.image
+    if user.image.present?
       image_tag user.image.thumb100.url, class: 'thumb'
     else
-      image_tag '/assets/human_default.png', class: 'thumb'
+      image_tag '/assets/user_default_100.png', class: 'thumb'
     end
   end
   
   def user_icon_thumb60(user)
-    if user.image
+    if user.image.present?
       image_tag user.image.thumb60.url, class: 'thumb'
     else
-      image_tag '/assets/human_default.png', class: 'thumb'
+      image_tag '/assets/user_default_100.png', class: 'thumb'
     end
   end
   
