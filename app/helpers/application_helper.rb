@@ -29,7 +29,7 @@ module ApplicationHelper
     if user.image.present?
       image_tag user.image.thumb.url, class: 'thumb'
     else
-      asset_path '/assets/user_default_300.png', class: 'thumb'
+      image_tag 'user_default_300.png', class: 'thumb'
     end
   end
   
@@ -37,7 +37,7 @@ module ApplicationHelper
     if user.image.present?
       image_tag user.image.thumb100.url, class: 'thumb'
     else
-      asset_path '/assets/user_default_100.png', class: 'thumb'
+      image_tag 'user_default_100.png', class: 'thumb'
     end
   end
   
@@ -45,7 +45,7 @@ module ApplicationHelper
     if user.image.present?
       image_tag user.image.thumb60.url, class: 'thumb'
     else
-      asset_path '/assets/user_default_100.png', class: 'thumb'
+      image_tag 'user_default_100.png', class: 'thumb'
     end
   end
   
