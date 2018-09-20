@@ -1,11 +1,5 @@
+<section>
 <h1><%= @spot.name %>(<%= @spot.kana %>)</h1>
-<p><%= @spot.address %>
-緯度:<%= @spot.latitude %>
-経度:<%= @spot.longitude %></p>
-
-
-
-<h2>基本情報</h2>
 
 <script type="text/javascript">
   function initMap() {
@@ -41,14 +35,26 @@
 
 <div id="map"></div>
 
+<div class="card spot-info">
+  <div class="card-header">
+    基本情報
+  </div>
+  <div class="card-body">
+    <p><%= @spot.address %></p>
+    <p>緯度:<%= @spot.latitude %> 経度:<%= @spot.longitude %></p>
+  </div>
+</div>
+</section>
 
+<section>
+<h2>口コミ一覧</h2>
 
-
-<h2>コメント一覧</h2>
-
-<ul>
+<ul class="review-list">
   <% @spot.reviews.each do |review| %>
-    <li><%= image_tag(review.image, class: 'review-thumb') %><%= review.comment %> by <%= review.user.name %></li>
+    <li>
+      <div class="thumb"></div>
+      <%= image_tag(review.image, class: 'review-thumb') %><%= review.comment %> by <%= review.user.name %>
+    </li>
   <% end %>
 </ul>
 
@@ -59,3 +65,5 @@
 <%= link_to 'スポット一覧へ', spots_path, class: 'btn btn-lg btn-secondary' %>
 <%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>
 <%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+
+</section>

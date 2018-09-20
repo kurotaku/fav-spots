@@ -20,16 +20,14 @@
 @import 'font-awesome';
 
 body {
-  padding-top: 3.5rem;
+  padding-top: 74px;
 }
 
 section{
   margin-bottom: 2rem;
 }
 
-hr{
-  margin-bottom: 2rem;
-}
+
 
 // .btn{
 // margin-left: 10px;
@@ -59,29 +57,9 @@ hr{
   p{
     font-size: 14px;
   }
-  .spot-list{
-    li{
-      list-style: none;
-      border-bottom: 1px solid #eee;
-      a{
-        color: #333;
-        display: block;
-        padding: 10px 20px;
-        &:hover{
-          text-decoration: none;
-          background: #eee;
-        }
-        .spot-name{
-          display: block;
-          font-weight: bold;
-          line-height: 1.8;
-        }
-        .spot-address{
-          display: block;
-          font-size: 13px;
-        }
-      }
-    }
+  hr{
+    margin-bottom: 2rem;
+    border-top: 1px solid #eee;
   }
 }
 
@@ -91,7 +69,7 @@ hr{
 
 .sidebar {
   position: fixed;
-  top: 51px;
+  top: 74px;
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -144,12 +122,82 @@ hr{
   border-color: #f00000;
 }
 
+.spot-list{
+  li{
+    list-style: none;
+    border-bottom: 1px solid #eee;
+    a{
+      color: #333;
+      display: block;
+      padding: 10px 20px;
+      &:hover{
+        text-decoration: none;
+        background: #eee;
+      }
+      .spot-name{
+        display: block;
+        font-weight: bold;
+        line-height: 1.8;
+      }
+      .spot-address{
+        display: block;
+        font-size: 13px;
+      }
+    }
+  }
+}/* .spot-list */
+.review-list{
+  li{
+    .review-thumb{
+      width: 200px;
+      height: auto;
+    }
+  }
+}/* .review-list */
+
+
+
+/* header */
+.navbar-nav{
+  .nav-item{
+    align-items: center;
+    display: flex;
+  }
+  .current-user-icon{
+    .thumb{
+      border-radius: 100%;
+      width:  40px;
+    }
+  }
+  .dropdown-menu{
+    h2{
+      padding: 0.25rem 1.5rem 0.8rem;
+      font-size: 16px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
+
+
+
+.user-form{
+  .thumb{
+    display: block;
+  }
+}
+
+
+
 /* map */
 #map {
   height: 400px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align:left;
   width: 100%;
+}
+
+.spot-info{
+  margin-bottom: 20px;
 }
 
 .tab-content{

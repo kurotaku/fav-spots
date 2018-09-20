@@ -23,10 +23,12 @@
       <% end %>
       <% if logged_in? %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="https://example.com" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
+          <a class="nav-link dropdown-toggle" href="https://example.com" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="current-user-icon"><%= user_icon_thumb60(current_user) %></span></a>
           <div class="dropdown-menu">
+            <h2><%= current_user.name %></h2>
             <%= link_to(content_tag(:i, ' マイページ', class: 'fa fa-user'), mypage_path, class: 'dropdown-item') %>
             <%= link_to(content_tag(:i, ' プロフィール', class: 'fa fa-address-card'), user_path(current_user), class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, ' プロフィール編集', class: 'fa fa-cog'), edit_user_path(current_user), class: 'dropdown-item') %>
             <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'dropdown-item') %>
           </div>
         </li>

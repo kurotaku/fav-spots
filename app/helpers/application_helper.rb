@@ -24,4 +24,29 @@ module ApplicationHelper
       
     raw(html)
   end
+  
+  def user_icon_thumb(user)
+    if user.image
+      image_tag user.image.thumb.url, class: 'thumb'
+    else
+      image_tag '/assets/human_default.png', class: 'thumb'
+    end
+  end
+  
+  def user_icon_thumb100(user)
+    if user.image
+      image_tag user.image.thumb100.url, class: 'thumb'
+    else
+      image_tag '/assets/human_default.png', class: 'thumb'
+    end
+  end
+  
+  def user_icon_thumb60(user)
+    if user.image
+      image_tag user.image.thumb60.url, class: 'thumb'
+    else
+      image_tag '/assets/human_default.png', class: 'thumb'
+    end
+  end
+  
 end

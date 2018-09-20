@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, html: {class: 'user-form'} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="form-group">
@@ -9,6 +9,12 @@
   <div class="form-group">
     <%= f.label :email, 'Email' %>
     <%= f.email_field :email, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :image, '画像' %><br />
+    <%= user_icon_thumb(@user) %>
+    <%= f.file_field :image %>
   </div>
   
   <div class="form-group">

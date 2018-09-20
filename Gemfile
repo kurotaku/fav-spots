@@ -43,7 +43,8 @@ gem 'geocoder'
 gem 'jp_prefecture'
 
 gem 'carrierwave'
-gem 'rmagick'
+# gem 'rmagick'
+gem 'mini_magick'
 
 gem 'geokit-rails'
 

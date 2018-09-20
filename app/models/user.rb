@@ -3,4 +3,6 @@ class User < ApplicationRecord
   
   has_many :spots
   has_many :reviews
+  
+  mount_uploader :image, ImageUploader
 end
