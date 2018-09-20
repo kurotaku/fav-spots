@@ -51,10 +51,7 @@
 
 <ul class="review-list">
   <% @spot.reviews.each do |review| %>
-    <li>
-      <div class="thumb"></div>
-      <%= image_tag(review.image, class: 'review-thumb') %><%= review.comment %> by <%= review.user.name %>
-    </li>
+    <%= render '/reviews/review', review: review %>
   <% end %>
 </ul>
 

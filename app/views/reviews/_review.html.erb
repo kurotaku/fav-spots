@@ -1,0 +1,18 @@
+<li class="card flex-md-row mb-4 shadow-sm h-md-250">
+  <%= review_thumb300(review, 'card-img-left flex-auto d-none d-lg-block') %>
+  <div class="card-body d-flex flex-column align-items-start">
+    <a href="<%= user_path(review.user) %>"><%= user_icon_thumb60(review.user) %><span><%= review.user.name %></span></a>
+    <% unless controller.controller_name == 'spots' && controller.action_name == 'show' %>
+      <h3><%= review.spot.name %></h3>
+    <% end %>
+    <p class="card-text"><%= review.comment %></p>
+    <div class="mb-1 text-muted mb-auto">
+      <time datetime="<%= review.created_at %>">
+        <%= time_ago_in_words(review.created_at) %> ago.
+      </time>
+    </div>
+    <% if current_user == review.user %>
+      <%= link_to '削除', review, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+    <% end %>
+  </div>
+</li>

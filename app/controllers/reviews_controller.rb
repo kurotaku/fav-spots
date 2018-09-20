@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: [:show, :destroy]
+  
   def index
   end
 
@@ -20,9 +22,17 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @spot = @review.spot
+    @review.destroy
+    flash[:success] = 'スポットを削除しました'
+    redirect_to spot_url(@spot)
   end
   
   private
+  
+  def set_review
+    @review = Review.find(params[:id])
+  end
   
   def review_params
     params.require(:review).permit(:comment, :spot_id, :image)

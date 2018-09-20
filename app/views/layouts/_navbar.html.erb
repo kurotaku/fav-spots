@@ -21,6 +21,9 @@
           <%= link_to(content_tag(:i, ' カテゴリ一覧', class: 'fa fa-list-ul'), categories_path, class: 'nav-link') %>
         </li>
       <% end %>
+      <li class="nav-item">
+        <%= link_to(content_tag(:i, ' スポット検索', class: 'fa fa-search'), search_path, class: 'nav-link') %>
+      </li>
       <% if logged_in? %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="https://example.com" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="current-user-icon"><%= user_icon_thumb60(current_user) %></span></a>
