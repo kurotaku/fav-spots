@@ -4,9 +4,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
-  # storage :sftp
+  if Rails.env == 'production'
+    storage :fog
+  else
+    storage :file
+  end
   
   # CarrierWave.configure do |config|
   #   config.ftp_host = ENV['FTP_HOST']
@@ -19,16 +21,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   config.ftp_tls = false
   # end
   
-  CarrierWave.configure do |config|
-    config.sftp_host = ENV['FTP_HOST'],
-    config.sftp_user = ENV['FTP_USER'],
-    config.sftp_options = {
-    :password => ENV['FTP_PASS'],
-    :port => 22
-    }
-    config.sftp_folder = ENV['FTP_PATH']
-    config.sftp_url = ENV['FTP_URL']
-  end
+  # CarrierWave.configure do |config|
+  #   config.sftp_host = ENV['FTP_HOST'],
+  #   config.sftp_user = ENV['FTP_USER'],
+  #   config.sftp_options = {
+  #   :password => ENV['FTP_PASS'],
+  #   :port => 22
+  #   }
+  #   config.sftp_folder = ENV['FTP_PATH']
+  #   config.sftp_url = ENV['FTP_URL']
+  # end
   
   
 
