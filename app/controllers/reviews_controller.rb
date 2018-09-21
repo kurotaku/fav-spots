@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
   end
   
   def review_params
-    params.require(:review).permit(:comment, :spot_id, :image['filename'])
+    params.require(:review).permit(:comment, :spot_id, :image)
   end
   
 end
