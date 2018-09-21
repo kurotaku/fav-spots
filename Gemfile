@@ -43,6 +43,7 @@ gem 'geocoder'
 gem 'jp_prefecture'
 
 gem 'carrierwave'
+gem 'carrierwave-ftp', :require => 'carrierwave/storage/ftp/all'
 # gem 'rmagick'
 gem 'mini_magick'
 

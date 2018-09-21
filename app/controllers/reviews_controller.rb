@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
   def destroy
     @spot = @review.spot
     @review.destroy
-    flash[:success] = 'スポットを削除しました'
+    flash[:success] = '口コミを削除しました'
     redirect_to spot_url(@spot)
   end
   
@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
   end
   
   def review_params
-    params.require(:review).permit(:comment, :spot_id, :image)
+    params.require(:review).permit(:comment, :spot_id, :image['filename'])
   end
   
 end

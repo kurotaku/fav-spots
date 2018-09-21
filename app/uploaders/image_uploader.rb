@@ -4,8 +4,33 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
+  storage :sftp
+  
+  # CarrierWave.configure do |config|
+  #   config.ftp_host = ENV['FTP_HOST']
+  #   config.ftp_port = 21
+  #   config.ftp_user = ENV['FTP_USER']
+  #   config.ftp_passwd = ENV['FTP_PASS']
+  #   config.ftp_folder = ENV['FTP_PATH']
+  #   config.ftp_url = ENV['FTP_URL']
+  #   config.ftp_passive = false
+  #   config.ftp_tls = false
+  # end
+  
+  CarrierWave.configure do |config|
+    config.sftp_host = ENV['FTP_HOST'],
+    config.sftp_user = ENV['FTP_USER'],
+    config.sftp_options = {
+    :password => ENV['FTP_PASS'],
+    :port => 22
+    }
+    config.sftp_folder = ENV['FTP_PATH']
+    config.sftp_url = ENV['FTP_URL']
+  end
+  
+  
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
