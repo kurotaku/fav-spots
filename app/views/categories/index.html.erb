@@ -1,6 +1,6 @@
 <h1>カテゴリー一覧</h1>
 <ul>
   <% @categories.each do |category| %>
-    <li><%= category.name %> | <%= category.slug %> | <%= category.category_type %> | <%= link_to '削除', category, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %></li>
+    <li><%= category.id %> | <%= category.spots.count %><%= category.name %> | <%= category.slug %> | <%= category.category_type %> | <%= link_to '編集', edit_category_path(category), class: 'btn btn-warning' %> <%= link_to '削除', category, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %></li>
   <% end %>
 </ul>

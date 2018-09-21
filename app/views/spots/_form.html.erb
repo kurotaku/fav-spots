@@ -42,8 +42,12 @@
   </div>
   
   <div class="form-group">
-    <%= f.label :category_ids, 'カテゴリー' %>
-    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+    <%= f.label :category_ids, 'カテゴリー', class: 'cat-label' %>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.label { b.check_box + b.text } %>
+      </div>
+    <% end %>
   </div>
   
   <div class="form-group">

@@ -56,6 +56,7 @@ class SpotsController < ApplicationController
   def search
     @features = Category.where(category_type: 'feature')
     @lucks = Category.where(category_type: 'luck')
+    @routes = Category.where(category_type: 'route')
   end
   
   #読み込み時現在地から
@@ -64,7 +65,7 @@ class SpotsController < ApplicationController
       lat = params[:lat]
       lng = params[:lng]
       latlag = [lat, lng]
-      @spots = Spot.near(latlag, 100, units: :km)
+      @spots = Spot.near(latlag, 20, units: :km)
     else
       @spots = Spot.all
     end
@@ -83,29 +84,41 @@ class SpotsController < ApplicationController
     end
   end
   
+  #カテゴリーを絞り込み
+  def ajax_category_select
+    if params[:value].present?
+      category_type = params[:value]
+      @categories = Category.where(category_type: category_type)
+    else
+      @categories = Category.all
+    end
+  end
+  
   #検索条件にマッチしたものを
   def ajax_search
     # 都道府県あり
     if params[:area][:pref].present?
       pref = params[:area][:pref]
-      if params[:keywords][:feature].present?
-        feature = params[:keywords][:feature]
-        feature_id = Category.find_by(slug: feature).id
-        @spots = category.spots.where(pref: pref).where(category_id: feature_id)
-        category = Category.find_by(slug: feature)
+      if params[:categories][:category_id].present?
+        category_id = params[:categories][:category_id]
+        category = Category.find_by(id: category_id)
+        @spots = category.spots.where(pref: pref)
+      else
+        @spots = Spot.where(pref: pref)
       end
     # 全国
     else
-      if params[:keywords][:feature].present?
-        feature = params[:keywords][:feature]
-        feature_id = Category.find_by(slug: feature).id
-        @spots = category.spots.where(category_id: feature_id)
+      if params[:categories][:category_id].present?
+        category_id = params[:categories][:category_id]
+        category = Category.find_by(id: category_id)
+        @spots = category.spots
       else
         @spots = Spot.all
       end
     end
   end
   
+  #キーワード検索
   def ajax_keyword
     if params[:keyword].present?
       keyword = params[:keyword]

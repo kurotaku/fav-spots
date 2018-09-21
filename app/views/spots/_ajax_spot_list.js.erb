@@ -1,0 +1,10 @@
+<% if @spots.any? %>
+  var addHTML = "";
+  <% @spots.each do |spot| %>
+    addHTML += `<%= render 'spot_list', spot: spot %>`;
+  <% end %>
+  $('#spotList').html(addHTML);
+<% else %>
+  var addHTML = "<p>該当のスポットはありません。</p>";
+  $('#spotList').html(addHTML);
+<% end %>

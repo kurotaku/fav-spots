@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :require_user_logged_in, only: [:new, :destroy]
   before_action :set_review, only: [:show, :destroy]
   
   def index

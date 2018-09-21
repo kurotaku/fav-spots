@@ -1,0 +1,5 @@
+var HTML = "<option value=''>未選択</option>>";
+<% @categories.each do |category| %>
+  HTML += `<option value="<%= category.id %>"><%= category.name %></option>`;
+<% end %>
+$('#category-field').html(HTML);

@@ -33,7 +33,7 @@ if( navigator.geolocation ){
   }
   var option = {
     "enableHighAccuracy": false,
-    "timeout": 100 ,
+    "timeout": 1000 ,
     "maximumAge": 100 ,
   };
 
@@ -58,9 +58,10 @@ if( navigator.geolocation ){
   </ul>
   <!--タブのコンテンツ部分-->
   <div class="tab-content">
+    
     <div id="tab1" class="tab-pane active">
       <h3>現在地から</h3>
-      <%= form_tag ajax_location_path, method:'get', remote: true do %>
+      <%= form_tag ajax_location_path, method:'get', class: 'search-form location', remote: true do %>
         <%= label :lat, '緯度' %>
         <%= text_field :latlag, :lat, { class: 'form-control', id: 'latfield', name: 'latfield', readonly: true} %>
         <%= label :lng, '経度' %>
@@ -71,22 +72,34 @@ if( navigator.geolocation ){
         <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
       <% end %>
     </div>
+    
     <div id="tab2" class="tab-pane">
       <h3>エリア・カテゴリで絞り込み</h3>
-      <%= form_tag ajax_search_path, method:'get', remote: true do %>
+      <%= form_tag ajax_search_path, method:'get', class: 'search-form search', remote: true do %>
         <%= label :pref, '都道府県' %>
         <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control' } ) %>
-        <%= label :feature, '特徴' %>
-        <%= collection_select(:keywords, :feature, @features, :slug, :name, {prompt: "選択してください"}, { class: 'form-control' } ) %>
-        <%= label :luck, 'ご利益' %>
-        <%= collection_select(:keywords, :luck, @lucks, :slug, :name, {}, { class: 'form-control' } ) %>
-        この条件で
+        <%= label :feature, '絞り込み', '', class: 'sort' %>
+        <%= select :category_type, :category_type, [["特徴", 'feature'], ["ご利益", 'luck'], ["巡礼", 'route']], { prompt: "全カテゴリー" }, {class: "form-control", id: 'category-sort'} %>
+        <%= collection_select(:categories, :category_id, Category.all, :id, :name, {prompt: "未選択"}, { class: 'form-control', id: 'category-field' } ) %>
+        <div style="clear: both;">この条件で</div>
         <%= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
       <% end %>
     </div>
+    
+    <script>
+      $(document).on('change', '#category-sort', function(){
+        var value = $(this).val();
+        $.ajax({
+          type: "GET",
+          url: "<%= ajax_category_select_url %>",
+          data: `value=${value}`
+        });
+      });
+    </script>
+    
     <div id="tab3" class="tab-pane">
       <h3>キーワード検索</h3>
-      <%= form_tag ajax_keyword_path, method:'get', remote: true do %>
+      <%= form_tag ajax_keyword_path, method:'get', class: 'search-form keyword', remote: true do %>
         <%= label :pref, '都道府県' %>
         <%= collection_select(:area, :pref, JpPrefecture::Prefecture.all, :name_e, :name, {prompt: '全国'}, { class: 'form-control', id: 'prefField' } ) %>
         <%= label :keyword, 'キーワード' %>
@@ -94,11 +107,12 @@ if( navigator.geolocation ){
         <%#= submit_tag('再表示', class: 'btn btn-primary btn-block') %>
       <% end %>
     </div>
+    
   </div>
 </section>
 
 <section>
-  <h1><i class="fa fa-map-marker" aria-hidden="true"></i> 近くのスポット</h2>
+  <h1><i class="fa fa-map-marker" aria-hidden="true"></i> 該当のスポット</h2>
 
   <ul id="spotList" class="spot-list">
     

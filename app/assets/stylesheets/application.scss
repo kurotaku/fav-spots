@@ -27,13 +27,6 @@ section{
   margin-bottom: 2rem;
 }
 
-
-
-// .btn{
-// margin-left: 10px;
-// margin-right: 10px;
-// }
-
 /*
  * Typography
  */
@@ -95,19 +88,6 @@ section{
   border-radius: 0;
 }
 
-/*
- * Dashboard
- */
-
-/* Placeholders */
-.placeholders {
-  padding-bottom: 3rem;
-}
-
-.placeholder img {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
 
 /* error */
 #error_explanation {
@@ -121,6 +101,53 @@ section{
 .field_with_errors .form-control{
   border-color: #f00000;
 }
+
+
+/* header */
+.navbar-nav{
+  .nav-item{
+    align-items: center;
+    display: flex;
+  }
+  .current-user-icon{
+    .thumb{
+      border-radius: 100%;
+      width: 40px;
+    }
+  }
+  .dropdown-menu{
+    h2{
+      padding: 0.25rem 1.5rem 0.8rem;
+      font-size: 16px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
+
+/* form */
+.user-form{
+  .thumb{
+    display: block;
+  }
+}
+
+.search-form{
+  &.search{
+    .sort{
+      display: block;
+    }
+    #category-sort{
+      width: 20%;
+      float: left;
+    }
+    #category-field{
+      width: 80%;
+      float: left;
+    }
+  }
+}
+
+
 
 .spot-list{
   li{
@@ -157,6 +184,7 @@ section{
       .thumb{
         width: 40px;
         height: 40px;
+        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
         border-radius: 100%;
         margin-right: 10px;
       }
@@ -170,40 +198,24 @@ section{
 
 
 
-/* header */
-.navbar-nav{
-  .nav-item{
-    align-items: center;
-    display: flex;
-  }
-  .current-user-icon{
-    .thumb{
-      border-radius: 100%;
-      width:  40px;
-    }
-  }
-  .dropdown-menu{
-    h2{
-      padding: 0.25rem 1.5rem 0.8rem;
-      font-size: 16px;
-      border-bottom: 1px solid #eee;
-    }
-  }
+
+
+
+
+
+.cat-label{
+  display: block;
 }
 
-
-
-.user-form{
-  .thumb{
-    display: block;
-  }
+.spot-overview{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
-
-
-/* map */
 #map {
   height: 400px;
+  margin-top: 20px;
   margin-bottom: 20px;
   text-align:left;
   width: 100%;

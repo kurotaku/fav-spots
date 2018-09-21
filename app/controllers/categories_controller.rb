@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
   
   def index
     @categories = Category.all
@@ -23,6 +23,12 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    if @category.update(category_params)
+      flash[:success] = 'カテゴリーを変更しました'
+      redirect_to categories_url
+    else
+      render :edit
+    end
   end
 
   def destroy

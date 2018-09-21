@@ -2,7 +2,7 @@
   <%= review_thumb300(review, 'card-img-left flex-auto d-none d-lg-block') %>
   <div class="card-body d-flex flex-column align-items-start">
     <a href="<%= user_path(review.user) %>"><%= user_icon_thumb60(review.user) %><span><%= review.user.name %></span></a>
-    <% unless controller.controller_name == 'spots' && controller.action_name == 'show' %>
+    <% unless current_page?(:controller => 'spots', :action => 'show') %>
       <h3><%= review.spot.name %></h3>
     <% end %>
     <p class="card-text"><%= review.comment %></p>

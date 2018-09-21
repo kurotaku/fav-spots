@@ -1,6 +1,3 @@
-<section>
-<h1><%= @spot.name %>(<%= @spot.kana %>)</h1>
-
 <script type="text/javascript">
   function initMap() {
 
@@ -33,6 +30,19 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAOyCOKNI46ijTFKEZtCUjh9Cx6R4PsO7Q&callback=initMap">
 </script>
 
+<section>
+<h1><%= @spot.name %>(<%= @spot.kana %>)</h1>
+
+<% @spot.categories.each do |category| %>
+  <span class="badge badge-pill badge-secondary"><%= category.name %></span>
+<% end %>
+<% if @spot.overview %>
+  <div class="card spot-overview">
+    <%= simple_format(@spot.overview) %>
+  </div>
+<% end %>
+
+
 <div id="map"></div>
 
 <div class="card spot-info">
@@ -41,7 +51,9 @@
   </div>
   <div class="card-body">
     <p><%= @spot.address %></p>
+    <%= simple_format(@spot.access) %>
     <p>緯度:<%= @spot.latitude %> 経度:<%= @spot.longitude %></p>
+    <p><%= @spot.phone %></p>
   </div>
 </div>
 </section>
