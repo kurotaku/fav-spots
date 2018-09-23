@@ -1,7 +1,11 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <a class="navbar-brand mr-auto" href="/">FAV SPOTS</a>
-    <ul class="navbar-nav">
+<nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+  <a class="navbar-brand" href="/">FAV SPOTS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbars">
+    <ul class="navbar-nav mr-auto">
       <% if root_logged_in? %>
         <li class="nav-item">
           <%= link_to(content_tag(:i, ' データーベース図', class: 'fa fa-database'), dbmap_path, class: 'nav-link') %>
@@ -21,11 +25,27 @@
           <%= link_to(content_tag(:i, ' カテゴリ一覧', class: 'fa fa-list-ul'), categories_path, class: 'nav-link') %>
         </li>
       <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
         <%= link_to(content_tag(:i, ' スポット検索', class: 'fa fa-search'), search_path, class: 'nav-link') %>
       </li>
       <% if logged_in? %>
-        <li class="nav-item dropdown">
+      
+        <li class="nav-item d-md-none">
+          <%= link_to(content_tag(:i, ' マイページ', class: 'fa fa-user'), mypage_path, class: 'nav-link') %>
+        </li>
+        <li class="nav-item d-md-none">
+          <%= link_to(content_tag(:i, ' プロフィール', class: 'fa fa-address-card'), user_path(current_user), class: 'nav-link') %>
+        </li>
+        <li class="nav-item d-md-none">
+          <%= link_to(content_tag(:i, ' プロフィール編集', class: 'fa fa-cog'), edit_user_path(current_user), class: 'nav-link') %>
+        </li>
+        <li class="nav-item d-md-none">
+          <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'nav-link') %>
+        </li>
+      
+        <li class="nav-item d-none d-md-block dropdown">
           <a class="nav-link dropdown-toggle" href="https://example.com" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="current-user-icon"><%= user_icon_thumb60(current_user) %></span></a>
           <div class="dropdown-menu">
             <h2><%= current_user.name %></h2>
@@ -35,9 +55,7 @@
             <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'dropdown-item') %>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          
-        </li>
+        
       <% else %>
         <li class="nav-item">
           <%= link_to(content_tag(:i, ' ユーザー登録', class: 'fa fa-user-plus'), signup_path, class: 'nav-link') %>

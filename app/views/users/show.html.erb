@@ -1,5 +1,5 @@
 <section>
-  <h1><%= @user.name %>の詳細</h1>
+  <h1><%= @user.name %>さんの詳細</h1>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -22,14 +22,16 @@
         <th scope="row">email</th>
         <td><%= @user.email %></td>
       </tr>
-      <tr>
-        <th scope="row">root</th>
-        <td><%= @user.root %></td>
-      </tr>
-      <tr>
-        <th scope="row">admin</th>
-        <td><%= @user.admin %></td>
-      </tr>
+      <% if root_logged_in? %>
+        <tr>
+          <th scope="row">root</th>
+          <td><%= @user.root %></td>
+        </tr>
+        <tr>
+          <th scope="row">admin</th>
+          <td><%= @user.admin %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </section>
@@ -37,15 +39,19 @@
 <section>
   <% if admin_logged_in? %>
     <%= link_to '編集', edit_user_path, class: 'btn btn-lg btn-warning' %>
+    <%= link_to '削除', @message, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
   <% end %>
-  <%= link_to '削除', @message, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
 </section>
 
 <section>
   <h2>最近投稿した口コミ</h2>
-  <ul class="review-list">
-  <% @reviews.each do |review| %>
-    <%= render '/reviews/review', review: review %>
+  <% if @reviews.any? %>
+    <ul class="review-list">
+      <% @reviews.each do |review| %>
+        <%= render '/reviews/review', review: review %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>まだ口コミを投稿していません。</p>
   <% end %>
-</ul>
 </section>

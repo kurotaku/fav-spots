@@ -1,7 +1,56 @@
-<h1>関東</h1>
-<ul>
-  <li><%= link_to '東京都', pref_path(pref: 'Tokyo') %></li>
-  <li><%= link_to '埼玉県', pref_path(pref: 'Saitama') %></li>
-  <li><%= link_to '神奈川県', pref_path(pref: 'Kanagawa') %></li>
-  <li><%= link_to '群馬県', pref_path(pref: 'Gunma') %></li>
-</ul>
+<section>
+  <h1>北海道・東北地方</h1>
+  <ul>
+    <% @prefs.each do |pref| %>
+      <% if pref.area == '北海道' || pref.area == '東北' %>
+        <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  
+  <h1>関東</h1>
+  <ul>
+    <% @prefs.each do |pref| %>
+      <% if pref.area == '関東' %>
+        <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  
+  <h1>中部</h1>
+  <ul>
+    <% @prefs.each do |pref| %>
+      <% if pref.area == '中部' %>
+        <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  
+  <h1>関西</h1>
+  <ul>
+    <% @prefs.each do |pref| %>
+      <% if pref.area == '関西' %>
+        <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  
+  <h1>中国・四国</h1>
+  <ul>
+    <% @prefs.each do |pref| %>
+      <% if pref.area == '中国' || pref.area == '四国' %>
+        <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  
+  <h1>九州・沖縄</h1>
+  <ul>
+    <% @prefs.each do |pref| %>
+      <% if pref.area == '九州' %>
+        <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+</section>

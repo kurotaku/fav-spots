@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <title>FavSpots</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="content-language" content="ja">
     <%= csrf_meta_tags %>
@@ -20,7 +21,7 @@
       
       <%= render 'layouts/sidebar' %>
       
-        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+        <main role="main" class="col-md-9 ml-sm-auto col-md-10 pt-3">
           <article class="main-content">
             <%= render 'layouts/flash_messages' %>
             <%= yield %>
