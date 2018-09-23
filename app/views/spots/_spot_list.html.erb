@@ -1,1 +1,9 @@
-<li><%= link_to(content_tag(:span, spot.name + "（" + spot.reviews.count.to_s + "）", class: 'spot-name') + content_tag(:span, spot.address, class: 'spot-address'), spot_path(spot), class: '') %></li>
+<li>
+  <a href="<%= spot_path(spot) %>">
+    <%= content_tag(:span, spot.name + "（" + spot.reviews.count.to_s + "）", class: 'spot-name') %>
+    <% spot.categories.each do |category| %>
+      <span class="badge badge-pill badge-secondary"><%= category.name %></span>
+    <% end %>
+    <%= content_tag(:span, spot.address, class: 'spot-address') %>
+  </a>
+</li>

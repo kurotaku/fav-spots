@@ -165,8 +165,10 @@ section{
         text-decoration: none;
         background: #eee;
       }
+      span{
+        vertical-align: middle;
+      }
       .spot-name{
-        display: block;
         font-weight: bold;
         line-height: 1.8;
       }
