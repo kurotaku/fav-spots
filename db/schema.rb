@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920173435) do
+ActiveRecord::Schema.define(version: 20180922120121) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "category_type"
@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 20180920173435) do
     t.string "access"
     t.string "phone"
     t.string "overview"
+    t.string "deity"
+    t.string "since"
+    t.string "sect"
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 

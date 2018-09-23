@@ -26,8 +26,7 @@
     });
   }
 </script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAOyCOKNI46ijTFKEZtCUjh9Cx6R4PsO7Q&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAOyCOKNI46ijTFKEZtCUjh9Cx6R4PsO7Q&callback=initMap">
 </script>
 
 <section>
@@ -50,10 +49,27 @@
     基本情報
   </div>
   <div class="card-body">
-    <p><%= @spot.address %></p>
-    <%= simple_format(@spot.access) %>
-    <p>緯度:<%= @spot.latitude %> 経度:<%= @spot.longitude %></p>
-    <p><%= @spot.phone %></p>
+    <% if @spot.address.present? %>
+      <p class="border-bottom pb-3 mb-0">住所: <%= @spot.address %></p>
+    <% end %>
+    <% if @spot.access.present? %>
+      <p class="border-bottom pb-3 pt-3 mb-0">アクセス方法: <%= @spot.access %></p>
+    <% end %>
+    <% if root_logged_in? %>
+      <p class="border-bottom pb-3 pt-3 mb-0">緯度: <%= @spot.latitude %> 経度: <%= @spot.longitude %></p>
+    <% end %>
+    <% if @spot.phone.present? %>
+      <p class="border-bottom pb-3 pt-3 mb-0">電話番号: <%= link_to @spot.phone, 'tel:' + @spot.phone %></p>
+    <% end %>
+    <% if @spot.since.present? %>
+      <p class="border-bottom pb-3 pt-3 mb-0">設立: <%= @spot.since %></p>
+    <% end %>
+    <% if @spot.deity.present? %>
+      <p class="border-bottom pb-3 pt-3 mb-0">祭神: <%= @spot.deity %></p>
+    <% end %>
+    <% if @spot.sect.present? %>
+      <p class="border-bottom pb-3 pt-3 mb-0">宗派: <%= @spot.sect %></p>
+    <% end %>
   </div>
 </div>
 </section>

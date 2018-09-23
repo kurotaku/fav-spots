@@ -51,8 +51,23 @@
   </div>
   
   <div class="form-group">
-    <%= f.label :overview, '概要' %>
-    <%= f.text_area :overview, class: 'form-control' %>
+    <%= f.label :phone, '電話番号' %>
+    <%= f.text_field :phone, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :since, '設立' %>
+    <%= f.text_field :since, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :sect, '宗派' %>
+    <%= f.text_field :sect, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :deity, '祭神' %>
+    <%= f.text_field :deity, class: 'form-control' %>
   </div>
   
   <%= f.submit '登録する', class: 'btn btn-primary btn-block' %>

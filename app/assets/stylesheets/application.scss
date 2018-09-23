@@ -50,6 +50,11 @@ section{
   p{
     font-size: 14px;
   }
+  ul{
+    li{
+      list-style: none;
+    }
+  }
   hr{
     margin-bottom: 2rem;
     border-top: 1px solid #eee;
@@ -151,7 +156,6 @@ section{
 
 .spot-list{
   li{
-    list-style: none;
     border-bottom: 1px solid #eee;
     a{
       color: #333;
@@ -173,9 +177,9 @@ section{
     }
   }
 }/* .spot-list */
+
 .review-list{
   li{
-    list-style: none;
     .thumb{
       width: 240px;
       height: 240px;

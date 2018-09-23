@@ -6,7 +6,7 @@
       <table class="table">
         <thead>
           <tr>
-            <% if current_user.root %>
+            <% if root_logged_in? %>
               <th>ID</th>
             <% end %>
             <th>名前</th>
@@ -17,20 +17,21 @@
           </tr>
         </thead>
         <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <% if current_user.root %>
-              <td><%= user.id %></td>
-            <% end %>
-            <td><%= link_to user.name, user_path(user) %></td>
-            <td><%= user.email %></td>
-            <td><%= user.root %></td>
-            <td><%= user.admin %></td>
-            <td>
-              <%= link_to '詳細', user_path(user), class: 'btn btn-secondary' %>
-            </td>
-          </tr>
-        <% end %>
+          <% @users.each do |user| %>
+            <tr>
+              <% if root_logged_in? %>
+                <td><%= user.id %></td>
+              <% end %>
+              <td><%= link_to user.name, user_path(user) %></td>
+              <td><%= user.email %></td>
+              <td><%= user.root %></td>
+              <td><%= user.admin %></td>
+              <td>
+                <%= link_to '詳細', user_path(user), class: 'btn btn-secondary' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
     <%#= paginate @users %>
