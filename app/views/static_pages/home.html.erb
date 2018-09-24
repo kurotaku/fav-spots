@@ -1,2 +1,8 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<section>
+  <h1>新着の口コミ</h1>
+  <ul class="review-list">
+    <% @reviews.each do |review| %>
+      <%= render '/reviews/review', review: review %>
+    <% end %>
+  </ul>
+</section>
