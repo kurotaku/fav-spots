@@ -41,17 +41,17 @@ module ApplicationHelper
     end
   end
   
-  def user_icon_thumb60(user)
+  def user_icon_thumb60(user, cls)
     if user.image.present?
-      image_tag user.image.thumb60.url, class: 'thumb'
+      image_tag user.image.thumb60.url, class: 'thumb ' + cls
     else
-      image_tag 'user_default_100.png', class: 'thumb'
+      image_tag 'user_default_100.png', class: 'thumb ' + cls
     end
   end
   
-  def review_thumb300(spot, cls)
-    if spot.image.present?
-      image_tag spot.image.thumb300.url, class: 'thumb ' + cls
+  def review_thumb300(picture, cls)
+    if picture.image.present?
+      image_tag picture.image.thumb300.url, class: 'thumb ' + cls
     else
       image_tag 'review_no_image_300.png', class: 'thumb ' + cls
     end

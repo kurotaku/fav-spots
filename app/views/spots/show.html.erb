@@ -79,7 +79,7 @@
 
 <ul class="review-list">
   <% @spot.reviews.each do |review| %>
-    <%= render '/reviews/review', review: review %>
+    <%= render '/reviews/review', review: review, picture: review.pictures.first %>
   <% end %>
 </ul>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180922120121) do
+ActiveRecord::Schema.define(version: 20180928134826) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "category_type"
@@ -29,13 +29,22 @@ ActiveRecord::Schema.define(version: 20180922120121) do
     t.index ["spot_id"], name: "index_category_spots_on_spot_id"
   end
 
+  create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "image"
+    t.string "comment"
+    t.string "label"
+    t.bigint "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_pictures_on_review_id"
+  end
+
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "spot_id"
     t.bigint "user_id"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.index ["spot_id"], name: "index_reviews_on_spot_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -72,6 +81,7 @@ ActiveRecord::Schema.define(version: 20180922120121) do
 
   add_foreign_key "category_spots", "categories"
   add_foreign_key "category_spots", "spots"
+  add_foreign_key "pictures", "reviews"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
   add_foreign_key "spots", "users"

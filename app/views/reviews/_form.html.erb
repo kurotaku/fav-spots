@@ -1,0 +1,26 @@
+<%= form_for(@review) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :spot_id, value: @spot.id  %>
+
+  <div class="form-group">
+    <%= f.label :comment, 'レビュー本文' %>
+    <%= f.text_area :comment, class: 'form-control' %>
+  </div>
+  
+  <div id="detail-association-insertion-point">
+    <%= f.fields_for :pictures do |a| %>
+      <%= render 'picture_fields', f: a %>
+    <% end %>
+  </div>
+  
+  <%= link_to_add_association '写真を追加', f, :pictures,
+    class: 'btn btn-default',
+    data: {
+      association_insertion_node: '#detail-association-insertion-point',
+      association_insertion_method: 'append' }
+   %>
+  
+  <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
+  
+<% end %>

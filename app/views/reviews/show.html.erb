@@ -1,0 +1,17 @@
+<section>
+  <h1><%= @review.spot.name %>（<%= @review.spot.kana %>）</h1>
+  
+  <div class="review-info mb-4 pb-4 border-bottom">
+    <a class="user-link" href="<%= user_path(@review.user) %>"><%= user_icon_thumb60(@review.user, 'rounded-circle mr-2') %><span><%= @review.user.name %></span><span class="time text-muted"> | <%= time_ago_in_words(@review.created_at) %> ago.</span></a>
+  </div>
+
+  <%= simple_format @review.comment %>
+  <% @review.pictures.each do |picture| %>
+    <%= image_tag picture.image.url, class: '' %>
+    <%= simple_format picture.comment %>
+  <% end %>
+  
+  <% if @review.user == current_user %>
+    <%= link_to '削除', @review, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+  <% end %>
+</section>

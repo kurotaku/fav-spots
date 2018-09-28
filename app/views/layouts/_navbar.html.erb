@@ -46,7 +46,7 @@
         </li>
       
         <li class="nav-item d-none d-md-block dropdown">
-          <a class="nav-link dropdown-toggle" href="https://example.com" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="current-user-icon"><%= user_icon_thumb60(current_user) %></span></a>
+          <a class="nav-link dropdown-toggle" href="https://example.com" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="current-user-icon"><%= user_icon_thumb60(current_user, 'rounded-circle') %></span></a>
           <div class="dropdown-menu">
             <h2><%= current_user.name %></h2>
             <%= link_to(content_tag(:i, ' マイページ', class: 'fa fa-user'), mypage_path, class: 'dropdown-item') %>

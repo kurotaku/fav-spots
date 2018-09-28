@@ -1,13 +1,19 @@
 class ReviewsController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :destroy]
-  before_action :set_review, only: [:show, :destroy]
+  before_action :set_review, only: [:destroy]
   
   def index
+  end
+  
+  def show
+    @spot = Spot.find(params[:id])
+    @review = Review.find(params[:review_id])
   end
 
   def new
     @spot = Spot.find(params[:id])
     @review = Review.new(spot_id: @spot.id)
+    @review.pictures.build
   end
 
   def create
@@ -36,7 +42,7 @@ class ReviewsController < ApplicationController
   end
   
   def review_params
-    params.require(:review).permit(:comment, :spot_id, :image)
+    params.require(:review).permit(:comment, :spot_id, pictures_attributes: [:id, :image, :comment, :label])
   end
   
 end

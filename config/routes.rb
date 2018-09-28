@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :spots do
     member do
       get :reviews
-      resources :reviews
+      resources :reviews, param: :review_id do 
+        get :pictures
+      end
     end
   end
   

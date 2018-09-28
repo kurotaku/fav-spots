@@ -1,13 +1,14 @@
 <li class="card flex-row mb-4 shadow-sm h-md-250">
-  <%= review_thumb300(review, 'card-img-left flex-auto') %>
+  <% review.pictures.each do |picture| %>
+    <%= review_thumb300(picture, 'card-img-left flex-auto') %>
+    <% break %>
+  <% end %>
   <div class="card-body d-flex flex-column align-items-start">
-    <a class="user-link" href="<%= user_path(review.user) %>"><%= user_icon_thumb60(review.user) %><span><%= review.user.name %></span><span class="time text-muted"> | <%= time_ago_in_words(review.created_at) %> ago.</span></a>
+    <a class="user-link" href="<%= user_path(review.user) %>"><%= user_icon_thumb60(review.user, 'rounded-circle') %><span><%= review.user.name %></span><span class="time text-muted"> | <%= time_ago_in_words(review.created_at) %> ago.</span></a>
     <% unless params[:controller] == 'spots' && params[:action] == 'show' %>
       <h3><%= review.spot.name %></h3>
     <% end %>
     <p class="card-text"><%= review.comment %></p>
-    <% if current_user == review.user %>
-      <%= link_to '削除', review, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
-    <% end %>
+    <%= link_to '詳細', review_path(id: review.spot.id, review_id: review.id), class: 'btn btn-lg btn-danger' %>
   </div>
 </li>
