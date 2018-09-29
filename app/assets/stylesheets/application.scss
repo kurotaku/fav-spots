@@ -58,6 +58,12 @@ section{
     font-weight: bold;
   }
   
+  h3 {
+    margin-bottom: 14px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
   p{
     font-size: 14px;
   }
@@ -139,10 +145,10 @@ section{
 }
 
 
+/*
+ * Form
+ */
 
-
-
-/* form */
 .user-form{
   .thumb{
     display: block;
@@ -165,8 +171,22 @@ section{
   }
 }
 
+.review-form{
+  .nested-fields{
+    position: relative;
+    .remove_fields{
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #333;
+    }
+  }
+}
 
 
+/*
+ * List
+ */
 .spot-list{
   li{
     border-bottom: 1px solid #eee;
@@ -262,6 +282,31 @@ section{
   right: 0;
   margin: 6px -1px 0 0;
 }
+
+
+/*
+ * Pages
+ */
+
+/* home */
+.home{
+  .pref-box{
+    ul{
+      li{
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 

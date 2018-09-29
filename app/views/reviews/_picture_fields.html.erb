@@ -1,4 +1,4 @@
-<div class="nested-fields">
+<div class="nested-fields card p-4 mb-4">
   <div class="form-group">
     <%= f.label :image, '画像' %><br />
     <%= f.file_field :image %>
@@ -7,5 +7,5 @@
     <%= f.label :comment, '画像の説明' %>
     <%= f.text_area :comment, class: 'form-control' %>
   </div>
-  <%= link_to_remove_association '削除', f, class: 'btn btn-default' %>
+  <%= link_to_remove_association content_tag(:i, '', class: 'fa fa-times'), f, class: 'btn btn-default' %>
 </div>

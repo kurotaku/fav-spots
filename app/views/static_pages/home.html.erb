@@ -1,6 +1,77 @@
-<section>
+<section class="home">
   <h1>スポットを探す</h1>
-  
+  <div class="pref-box card p-4 mb-4">
+    <h2>都道府県から探す</h2>
+    <ul class="d-flex">
+    
+      <li>
+        <h3>北海道・東北地方</h3>
+        <ul>
+          <% @prefs.each do |pref| %>
+            <% if pref.area == '北海道' || pref.area == '東北' %>
+              <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+      
+      <li>
+        <h3>関東</h3>
+        <ul>
+          <% @prefs.each do |pref| %>
+            <% if pref.area == '関東' %>
+              <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+      
+      <li>
+        <h3>中部</h3>
+        <ul>
+          <% @prefs.each do |pref| %>
+            <% if pref.area == '中部' %>
+              <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+      
+      <li>
+        <h3>関西</h3>
+        <ul>
+          <% @prefs.each do |pref| %>
+            <% if pref.area == '関西' %>
+              <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+      
+      <li>
+        <h3>中国・四国</h3>
+        <ul>
+          <% @prefs.each do |pref| %>
+            <% if pref.area == '中国' || pref.area == '四国' %>
+              <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+      
+      <li>
+      <h3>九州・沖縄</h3>
+        <ul>
+          <% @prefs.each do |pref| %>
+            <% if pref.area == '九州' %>
+              <li><%= link_to pref.name, pref_path(pref: pref.name_e) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+    
+    </ul>
+  </div><!-- .pref-box -->
   
   
   

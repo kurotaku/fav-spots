@@ -1,4 +1,4 @@
-<%= form_for(@review) do |f| %>
+<%= form_for @review, html: {class: 'review-form'} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.hidden_field :spot_id, value: @spot.id  %>
@@ -15,7 +15,7 @@
   </div>
   
   <%= link_to_add_association '写真を追加', f, :pictures,
-    class: 'btn btn-default',
+    class: 'btn btn-success mb-4',
     data: {
       association_insertion_node: '#detail-association-insertion-point',
       association_insertion_method: 'append' }

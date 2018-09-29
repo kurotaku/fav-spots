@@ -46,7 +46,6 @@ class SpotsController < ApplicationController
   
   def prefs
     @prefs = JpPrefecture::Prefecture.all
-    @hokkaido =  @prefs.find(area: '沖縄')
   end
   
   def pref
