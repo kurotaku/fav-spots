@@ -16,20 +16,22 @@
       <%= render 'layouts/navbar' %>
     </header>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-      
-      <%= render 'layouts/sidebar' %>
-      
-        <main role="main" class="col-md-9 ml-sm-auto col-md-10 pt-3">
+
+        <main role="main" class="col-md-8 pt-3">
           <article class="main-content">
             <%= render 'layouts/flash_messages' %>
             <%= yield %>
           </article>
         </main>
+        
+        <aside class="col-md-4 d-none d-md-block sidebar">
+          <%= render 'layouts/sidebar' %>
+        </aside>
 
       </div><!-- .row -->
-    </div><!-- .container-fluid -->
+    </div><!-- .container -->
   </body>
   
 </html>

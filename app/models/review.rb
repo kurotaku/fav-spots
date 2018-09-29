@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+  validates :comment, presence: true, length: { maximum: 255 }
+  
   belongs_to :spot
   belongs_to :user
   

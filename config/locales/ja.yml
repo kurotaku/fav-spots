@@ -8,6 +8,15 @@ ja:
         password: パスワード
       spot:
         name: 名称
+        address: 住所
+        pref: 都道府県
+      review:
+        comment: レビュー本文
+      picture:
+        image: 写真
+      category:
+        name: カテゴリー名
+        slug: スラッグ
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

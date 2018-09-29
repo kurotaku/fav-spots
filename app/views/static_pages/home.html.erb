@@ -1,8 +1,22 @@
 <section>
+  <h1>スポットを探す</h1>
+  
+  
+  
+  
+  
+  
+  
+  
   <h1>新着の口コミ</h1>
-  <ul class="review-list">
-    <% @reviews.each do |review| %>
-      <%= render '/reviews/review', review: review %>
-    <% end %>
-  </ul>
+  
+  <% if @reviews.any? %>
+    <ul class="review-list">
+      <% @reviews.each do |review| %>
+        <%= render '/reviews/review', review: review %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>口コミはまだありません。</p>
+  <% end %>
 </section>

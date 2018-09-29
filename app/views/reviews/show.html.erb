@@ -1,5 +1,5 @@
 <section>
-  <h1><%= @review.spot.name %>（<%= @review.spot.kana %>）</h1>
+  <h1><%= link_to "#{@review.spot.name}（#{@review.spot.kana}）", spot_path(@review.spot) %></h1>
   
   <div class="review-info mb-4 pb-4 border-bottom">
     <a class="user-link" href="<%= user_path(@review.user) %>"><%= user_icon_thumb60(@review.user, 'rounded-circle mr-2') %><span><%= @review.user.name %></span><span class="time text-muted"> | <%= time_ago_in_words(@review.created_at) %> ago.</span></a>

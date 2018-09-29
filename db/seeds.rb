@@ -74,6 +74,7 @@ admin_user.spots.create(name: '代々木八幡宮', kana: 'よよぎはちまん
 admin_user.spots.create(name: '明治神宮', kana: 'めいじじんぐう', category_ids: [4, 22], address: '東京都渋谷区代々木神園町１−１', pref: 'Tokyo')
 admin_user.spots.create(name: '東郷神社', kana: 'とうごうじんじゃ', address: '東京都渋谷区神宮前１丁目５−３', pref: 'Tokyo')
 
+admin_user.spots.create(name: '日光東照宮', kana: 'にっこうとうしょうぐう', category_ids: [18], address: '栃木県日光市山内２３０１', phone: '0288-54-0560', access: 'JR東武日光線・東武日光駅またはJR日光線・日光駅よりバスで西参道下車徒歩8分', since: '1617', deity: '徳川家康公', sect: '', pref: 'Tochigi')
 admin_user.spots.create(name: '三光院', kana: 'さんこういん', category_ids: [24], address: '群馬県沼田市柳町３９２', phone: '0278-24-4465', access: 'JR上越線・沼田駅よりバスで三光院前下車すぐ', since: '1324', deity: '十一面観世音菩薩', sect: '天台宗', pref: 'Gunma')
 admin_user.spots.create(name: '長谷寺', kana: 'ちょうこくじ', category_ids: [2, 24], address: '群馬県高崎市白岩町４４８', phone: '027-343-0349', access: 'JR上越新幹線ほか高崎駅よりバスでトドメキ下車、徒歩30分', since: '686', sect: '金峯山修験本宗', deity: '十一面観世音菩薩', pref: 'Gunma')
 admin_user.spots.create(name: '世良田東照宮', kana: 'せらだとうしょうぐう', category_ids: [22, 24, 27], address: '群馬県太田市世良田町３１１９−１', phone: '0276-52-2045', access: 'JR東武伊勢崎線・世良田駅より徒歩20分', since: '1639または1644', sect: '', deity: '徳川家康公', pref: 'Gunma')
