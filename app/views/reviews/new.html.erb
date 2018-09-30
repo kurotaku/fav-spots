@@ -1,3 +1,7 @@
+<% content_for(:title, @spot.name + 'への口コミ投稿') %>
+<% content_for(:body_class, "review") %>
+<% content_for(:body_id, "new") %>
+
 <h2><%= @spot.name %>へのレビュー投稿</h2>
 
 <%= render 'form' %>

@@ -1,3 +1,7 @@
+<% content_for(:title, @category.name + '編集') %>
+<% content_for(:body_class, "category") %>
+<% content_for(:body_id, "edit") %>
+
 <section>
   <h1>カテゴリー編集</h1>
   <%= render 'form' %>

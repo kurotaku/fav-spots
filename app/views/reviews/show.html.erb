@@ -1,3 +1,7 @@
+<% content_for(:title, @review.spot.name + 'への口コミ') %>
+<% content_for(:body_class, "review") %>
+<% content_for(:body_id, "show") %>
+
 <section>
   <h1><%= link_to "#{@review.spot.name}（#{@review.spot.kana}）", spot_path(@review.spot) %></h1>
   
@@ -7,11 +11,13 @@
 
   <%= simple_format @review.comment %>
   <% @review.pictures.each do |picture| %>
-    <%= image_tag picture.image.url, class: '' %>
+    <% if picture.image.present? %>
+      <%= image_tag picture.image.url, class: '' %>
+    <% end %>
     <%= simple_format picture.comment %>
   <% end %>
   
   <% if @review.user == current_user %>
-    <%= link_to '削除', @review, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+    <%= link_to '削除', review_path(id: @review.spot.id, review_id: @review.id), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
   <% end %>
 </section>

@@ -12,12 +12,10 @@ Rails.application.routes.draw do
   resources :spots do
     member do
       get :reviews
-      resources :reviews, param: :review_id do 
-        get :pictures
-      end
+      resources :reviews, param: :review_id
     end
   end
-  
+
   resources :categories
   
   get '/prefs/', to: 'spots#prefs'

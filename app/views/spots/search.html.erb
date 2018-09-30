@@ -1,3 +1,7 @@
+<% content_for(:title, 'スポット検索') %>
+<% content_for(:body_class, "spot") %>
+<% content_for(:body_id, "search") %>
+
 <script>
 if( navigator.geolocation ){
   navigator.geolocation.getCurrentPosition( success, error, option );

@@ -1,3 +1,6 @@
+<% content_for(:title, @spot.name) %>
+<% content_for(:body_class, "spot") %>
+<% content_for(:body_id, "index") %>
 <script type="text/javascript">
   function initMap() {
 
@@ -78,7 +81,7 @@
 <h2>口コミ一覧</h2>
 
 <ul class="review-list">
-  <% @spot.reviews.each do |review| %>
+  <% @reviews.each do |review| %>
     <%= render '/reviews/review', review: review, picture: review.pictures.first %>
   <% end %>
 </ul>
@@ -88,7 +91,9 @@
 <hr />
 
 <%= link_to 'スポット一覧へ', spots_path, class: 'btn btn-lg btn-secondary' %>
-<%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>
-<%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+<% if admin_logged_in? %>
+  <%= link_to '編集', edit_spot_path(@spot), class: 'btn btn-lg btn-warning' %>
+  <%= link_to '削除', @spot, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-lg btn-danger' %>
+<% end %>
 
 </section>

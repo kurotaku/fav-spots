@@ -1,0 +1,15 @@
+<% content_for(:title, @spot.name + 'の口コミ一覧') %>
+<% content_for(:body_class, "spot") %>
+<% content_for(:body_id, "reviews") %>
+
+<section>
+<h1><%= @spot.name %>の口コミ一覧</h1>
+
+<ul class="review-list">
+  <% @reviews.each do |review| %>
+    <%= render '/reviews/review', review: review, picture: review.pictures.first %>
+  <% end %>
+</ul>
+
+<%= link_to 'このスポットの口コミを投稿', new_review_path(@spot), class: 'btn btn-success btn-lg btn-block' %>
+</section>

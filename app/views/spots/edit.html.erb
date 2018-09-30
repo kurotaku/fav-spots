@@ -1,3 +1,7 @@
+<% content_for(:title, @spot.name + '編集') %>
+<% content_for(:body_class, "spot") %>
+<% content_for(:body_id, "edit") %>
+
 <section>
   <h1>スポット編集</h1>
   <%= render 'form' %>

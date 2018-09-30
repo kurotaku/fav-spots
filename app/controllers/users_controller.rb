@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:edit, :destroy]
+  before_action :require_user_logged_in, only: [:edit, :destroy, :mypage]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @reviews = @user.reviews
+    @reviews = @user.reviews.order('created_at DESC')
   end
 
   def new

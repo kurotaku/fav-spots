@@ -125,24 +125,28 @@ section{
 
 
 /* header */
-.navbar-nav{
-  .nav-item{
-    align-items: center;
-    display: flex;
-  }
-  .current-user-icon{
-    .thumb{
-      width: 40px;
+.navbar{
+  background: #d4451d;
+  .navbar-nav{
+    .nav-item{
+      align-items: center;
+      display: flex;
     }
-  }
-  .dropdown-menu{
-    h2{
-      padding: 0.25rem 1.5rem 0.8rem;
-      font-size: 16px;
-      border-bottom: 1px solid #eee;
+    .current-user-icon{
+      .thumb{
+        width: 40px;
+      }
+    }
+    .dropdown-menu{
+      h2{
+        padding: 0.25rem 1.5rem 0.8rem;
+        font-size: 16px;
+        border-bottom: 1px solid #eee;
+      }
     }
   }
 }
+
 
 
 /*

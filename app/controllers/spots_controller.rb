@@ -1,9 +1,9 @@
 class SpotsController < ApplicationController
   before_action :require_admin_logged_in, only: [:new, :create, :edit, :updeate, :destroy]
-  before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_action :set_spot, only: [:show, :edit, :update, :destroy, :reviews]
   
   def index
-    @spots = Spot.all
+    @spots = Spot.all.order('created_at DESC')
   end
 
   def new
@@ -12,6 +12,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @reviews = @spot.reviews.order('created_at DESC')
   end
 
   def create
@@ -132,6 +133,10 @@ class SpotsController < ApplicationController
     else
       @spots = Spot.all
     end
+  end
+  
+  def reviews
+    @reviews = @spot.reviews.order('created_at DESC')
   end
   
   private

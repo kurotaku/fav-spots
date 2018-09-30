@@ -1,5 +1,9 @@
+<% content_for(:title, @user.name + 'さんのプロフィール') %>
+<% content_for(:body_class, "user") %>
+<% content_for(:body_id, "show") %>
+
 <section>
-  <h1><%= @user.name %>さんの詳細</h1>
+  <h1><%= @user.name %>さんのプロフィール</h1>
   <table class="table table-bordered">
     <thead>
       <tr>
