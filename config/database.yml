@@ -50,5 +50,5 @@ production:
   <<: *default
   database: fav_spots_production
   pool: 5
-  username: ENV['DB_USER']
-  password: ENV['DB_PASS']
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
