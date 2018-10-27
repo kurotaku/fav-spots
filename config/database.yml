@@ -50,5 +50,3 @@ test:
 production:
   <<: *default
   database: fav-spots_production
-  username: fav-spots
-  password: <%= ENV['FAV-SPOTS_DATABASE_PASSWORD'] %>
