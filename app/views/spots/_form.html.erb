@@ -42,14 +42,32 @@
   </div>
   
   <div class="form-group">
-    <%= f.label :category_ids, 'カテゴリー', class: 'cat-label' %>
-    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+    <%= f.label :category_ids, 'ご利益', class: 'cat-label' %>
+    <%= f.collection_check_boxes(:category_ids, Category.where(category_type: 'luck'), :id, :name) do |b| %>
       <div class="form-check form-check-inline">
         <%= b.label { b.check_box + b.text } %>
       </div>
     <% end %>
   </div>
   
+  <div class="form-group">
+    <%= f.label :category_ids, '特徴', class: 'cat-label' %>
+    <%= f.collection_check_boxes(:category_ids, Category.where(category_type: 'feature'), :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.label { b.check_box + b.text } %>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :category_ids, '巡礼', class: 'cat-label' %>
+    <%= f.collection_check_boxes(:category_ids, Category.where(category_type: 'route'), :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.label { b.check_box + b.text } %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="form-group">
     <%= f.label :since, '設立' %>
     <%= f.text_field :since, class: 'form-control' %>
