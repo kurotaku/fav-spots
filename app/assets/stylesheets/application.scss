@@ -331,3 +331,15 @@ section{
 .pagination .page a{
   display: block;
 }
+
+
+div.spinner {
+  position: fixed !important;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100% !important;
+  height: 100vh;
+  div{
+    left: 50%;
+    top: 50% !important;
+  }
+}

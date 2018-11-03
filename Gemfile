@@ -50,7 +50,7 @@ gem 'carrierwave-ftp', :require => 'carrierwave/storage/ftp/all'
 gem 'fog-aws'
 # gem 'rmagick'
 gem 'mini_magick'
-
+gem 'spinjs-rails'
 gem 'geokit-rails'
 
 # Use Capistrano for deployment
