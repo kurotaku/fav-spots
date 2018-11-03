@@ -1,8 +1,0 @@
-*.gem
-*.rbc
-.bundle
-.config
-tmp/
-Gemfile.lock
-.ftp
-pkg/
