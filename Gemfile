@@ -53,6 +53,8 @@ gem 'mini_magick'
 gem 'spinjs-rails'
 gem 'geokit-rails'
 
+gem 'unicorn'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
