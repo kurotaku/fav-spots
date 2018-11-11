@@ -98,9 +98,10 @@
     <% @parsed_articles.each do |article| %>
       <li>
         <a href="<%= article['link'] %>"><%= article['title']['rendered'] %></a>
-        <a href="<%= article['link'] %>"><img src="<%= article['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] %>" /></a>
+        <% if article['_embedded']['wp:featuredmedia'].present? %>
+          <a href="<%= article['link'] %>"><img src="<%= article['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] %>" /></a>
+        <% end %>
         <%= article['content']['rendered'].html_safe %>
-        
       </li>
     <% end %>
   </ul>
