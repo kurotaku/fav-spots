@@ -93,6 +93,8 @@ GEM
     erubi (1.7.1)
     excon (0.62.0)
     execjs (2.7.0)
+    faraday (0.15.3)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     fog-aws (3.3.0)
       fog-core (~> 2.1)
@@ -167,6 +169,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    multipart-post (2.0.0)
     mysql2 (0.5.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -280,6 +283,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   dotenv-rails
+  faraday
   fog-aws
   font-awesome-rails
   geocoder

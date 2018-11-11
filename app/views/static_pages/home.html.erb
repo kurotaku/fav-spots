@@ -80,12 +80,6 @@
     </ul>
   </div><!-- .pref-box -->
   
-  
-  
-  
-  
-  
-  
   <h1>新着の口コミ</h1>
   
   <% if @reviews.any? %>
@@ -97,4 +91,19 @@
   <% else %>
     <p>口コミはまだありません。</p>
   <% end %>
+  
+  <h1>コラム</h1>
+  
+  <ul>
+    <% @parsed_articles.each do |article| %>
+      <li>
+        <a href="<%= article['link'] %>"><%= article['title']['rendered'] %></a>
+        <a href="<%= article['link'] %>"><img src="<%= article['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url'] %>" /></a>
+        <%= article['content']['rendered'].html_safe %>
+        
+      </li>
+    <% end %>
+  </ul>
+  
+  
 </section>
