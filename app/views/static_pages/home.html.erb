@@ -94,7 +94,7 @@
   
   <h1>コラム</h1>
   
-  <ul>
+  <ul class="article-list">
     <% @parsed_articles.each do |article| %>
       <li>
         <a href="<%= article['link'] %>"><%= article['title']['rendered'] %></a>

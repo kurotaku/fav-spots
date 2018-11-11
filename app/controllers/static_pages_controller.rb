@@ -4,9 +4,9 @@ class StaticPagesController < ApplicationController
     @prefs = JpPrefecture::Prefecture.all
     
     conn = Faraday.new(url: ENV['WP_PATH']) do |faraday|
-    faraday.request  :url_encoded             # form-encode POST params
-    faraday.response :logger                  # log requests to STDOUT
-    faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    faraday.request  :url_encoded
+    faraday.response :logger
+    faraday.adapter  Faraday.default_adapter
     end
 
     response = conn.get '/wp-json/wp/v2/posts?_embed'  
