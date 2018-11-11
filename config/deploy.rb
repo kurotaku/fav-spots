@@ -37,3 +37,12 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets'
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+set :unicorn_config_path, 'config/unicorn.rb'
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end
