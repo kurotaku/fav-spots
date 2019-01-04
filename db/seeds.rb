@@ -21,3 +21,5 @@ test_user = User.new(name: 'テストユーザー', email: 'test@test.com', root
 test_user.password = 'test'
 test_user.password_confirmation = 'test'
 test_user.save!
+
+
